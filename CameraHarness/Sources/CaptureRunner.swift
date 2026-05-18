@@ -117,14 +117,14 @@ struct CaptureRunner {
                 }
 
                 print("Got JPEG: \(captureData.jpegSizeBytes) bytes")
-                // LATER WE WILL PASS TO METRICS LOGGER
-
-                // Just save the photo rn for testing
+                // Pass to the metrics logger!
                 do {
-                    try captureData.jpegData.write(to: URL(fileURLWithPath: "tmp/test.jpg"))
+                    try saveRun(capturedData: captureData)
+
                 } catch {
-                    print("Photo failed to save")
+                    print("Failed to save the run....")
                 }
+                
             }
         } catch {
             // Error has occured.

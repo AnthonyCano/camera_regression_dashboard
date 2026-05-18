@@ -1,0 +1,15 @@
+{
+  "os_version" : "Version 26.4.1 (Build 25E253)",
+  "sample_frame" : "frame_4d3639d.jpg",
+  "timestamp" : "2026-05-18T02-42-12Z",
+  "device" : "Anthony’s MacBook Pro",
+  "git_sha" : "4d3639d",
+  "device_os" : "macOS",
+  "metrics" : {
+    "jpeg_width" : 1920,
+    "jpeg_size_bytes" : 249962,
+    "jpeg_height" : 1080,
+    "exif_iso" : 0,
+    "exif_exposure_time" : 0
+  }
+}
