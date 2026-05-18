@@ -14,7 +14,7 @@ xcuserdata/
 *.dSYM
 
 *.md
-
+/venv
 ## Playgrounds
 timeline.xctimeline
 playground.xcworkspace
