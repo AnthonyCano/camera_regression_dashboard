@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-05-18T06:41:43.324499+00:00",
+  "run_count": 1,
+  "frames_covered": [
+    "frame_2026-05-18T02-47-49Z_4d3639d.jpg"
+  ],
+  "runs": [
+    {
+      "metrics": {
+        "exif_exposure_time": 0,
+        "jpeg_height": 1080,
+        "exif_iso": 0,
+        "jpeg_size_bytes": 208320,
+        "jpeg_width": 1920,
+        "laplacian_variance": 20.54443769249098
+      },
+      "os_version": "Version 26.4.1 (Build 25E253)",
+      "sample_frame": "frame_2026-05-18T02-47-49Z_4d3639d.jpg",
+      "timestamp": "2026-05-18T02-47-49Z",
+      "device_os": "macOS",
+      "git_sha": "4d3639d",
+      "device": "Anthony\u2019s MacBook Pro"
+    }
+  ]
+}
