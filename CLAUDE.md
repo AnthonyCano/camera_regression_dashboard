@@ -27,8 +27,10 @@ The job description emphasizes "test frameworks & tools" running "24x7 in lab" �
 
 ### Phased approach
 
-- **Phase 1 (MVP):** macOS CLI using the built-in webcam via AVFoundation
-- **Phase 2 (stretch):** Continuity Camera support — the iPhone appears as an `AVCaptureDevice` on macOS, same CLI code, just a different device identifier. No iOS app needed.
+- **Phase 1 (MVP):** macOS CLI using the built-in webcam via AVFoundation — capture, ingest, regression detection, dashboard.
+- **Phase 2:** Multi-capture averaging, automated test scenarios across AVFoundation configurations, pass/fail exit codes for CI gating.
+- **Phase 3:** RAW vs JPEG comparison, exposure bracketing, device enumeration, session startup profiling, EXIF validation.
+- **Phase 4:** Continuity Camera support, PR comment reporting, full CI pipeline.
 
 ## Repo layout
 
@@ -129,12 +131,33 @@ Minimum viable scope, in priority order:
 
 Focus-lock and exposure-convergence timings are stretch goals — they're the fiddliest to time correctly and should be cut first if time runs short.
 
+## Next steps (beyond MVP)
+
+### Testing & Quality Engineering
+- **Multi-capture averaging** — take N photos per run via CLI flag (e.g. `--count 5`), average the metrics, report per-run variance. Demonstrates understanding of measurement stability and noise reduction.
+- **Automated test scenarios** — CLI flags to test different AVFoundation configurations (resolution presets, focus modes, exposure modes) and compare outputs across configurations. This is actual API test coverage.
+- **Pass/fail exit codes** — tool exits with code 0 (clean) or 1 (regression found) so CI can gate merges on camera quality.
+
+### Camera API depth
+- **RAW vs JPEG comparison** — capture both formats in the same run, compare file sizes and quality metrics. Demonstrates understanding of format tradeoffs.
+- **Exposure bracketing** — capture at multiple exposure settings, verify the API responds correctly and values change as expected. This is API behavior validation.
+- **Device enumeration** — list all available cameras and their capabilities (supported resolutions, frame rates, formats). Run the harness against each one. This is the kind of discovery tooling a test lab needs.
+- **Continuity Camera** — detect and use a connected iPhone as the capture device via a CLI flag (e.g. `--device "iPhone"`).
+
+### Low-level / debugging
+- **Session startup profiling** — measure and break down where time is spent during capture session initialization (device discovery, input creation, output configuration, first frame).
+- **EXIF validation** — verify that EXIF metadata values are within sane ranges and match the capture settings that were requested. Flag mismatches as test failures.
+
+### CI / Infrastructure
+- **GitHub Actions pipeline** — runs ingest, regression detection, and dashboard generation on every push.
+- **PR comment reporting** — CI posts regression results as a PR comment automatically so reviewers see quality impact inline.
+
 ## Known limitations (document honestly in README)
 
 - Single test scene, single device — no cross-device or cross-scene comparison.
 - 2-sigma threshold is untuned.
 - Built-in webcam has limited control compared to iPhone camera hardware.
-- Continuity Camera integration (iPhone as capture device) is a stretch goal.
+- Continuity Camera integration (iPhone as capture device) is a planned feature.
 
 ## How Claude Code should help
 
